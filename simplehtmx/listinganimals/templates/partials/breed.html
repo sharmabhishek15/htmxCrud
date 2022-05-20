@@ -1,0 +1,7 @@
+<select class="custom-select mb-4" name="breed">
+
+    <option selected>Open this select menu</option>
+    {% for breed in breeds %}
+        <option value="{{breed.pk}}">{{ breed.breedName }}</option>
+    {% endfor %}
+</select>

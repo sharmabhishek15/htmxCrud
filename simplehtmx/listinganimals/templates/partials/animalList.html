@@ -1,0 +1,31 @@
+<table class="table table-striped table-hover  table-bordered container">
+      <thead>
+        <tr>
+          <th scope="col">Animal</th>
+          <th scope="col">Breed</th>
+          <th scope="col">Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% if animalList %}
+      {% for animal in animalList %}
+        <tr>
+            <td>{{ animal.animalname }}</td>
+            <td>{{ animal.breedname }}</td>
+            <td>{{ animal.created }}</td>
+            <td>
+                {% csrf_token %}
+                <button
+                        hx-delete="{% url 'delete_animal' animal.pk %}"
+                        hx-target="#animalList"
+                        hx-confirm="Are you sure, you want to delete this."
+                        class="btn btn-danger">
+                Delete
+                </button>
+            </td>
+        </tr>
+      {% endfor %}
+      {% endif %}
+      </tbody>
+</table>
